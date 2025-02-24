@@ -283,7 +283,7 @@
          </when>
          <when>
             <jsonpath suppressExceptions="true">$.[?(@['messageBusAddress']['address'] == 'verification-bus-in')]</jsonpath>
-            <to uri="eventbus://verification-bus-in" />
+             <to uri="eventbus://mvs-bus-in" />
          </when>
          <when>
             <jsonpath suppressExceptions="true">$.[?(@['messageBusAddress']['address'] == 'abis-handler-bus-in')]</jsonpath>
@@ -293,14 +293,18 @@
             <jsonpath suppressExceptions="true">$.[?(@['messageBusAddress']['address'] == 'manual-adjudication-bus-in')]</jsonpath>
             <to uri="eventbus://manual-adjudication-bus-in" />
          </when>
+		  <when>
+            <jsonpath suppressExceptions="true">$.[?( @['tags']['ID_OBJECT-inDepthCitizenshipVerification'] == 'Y'  )]</jsonpath>
+            <to uri="eventbus://mvs-bus-in" />
+         </when>
          <otherwise>
             <to uri="eventbus://uin-generator-bus-in" />
          </otherwise>
       </choice>
    </route>
-   <route id="verification route-->uin-generator lost route">
-      <from uri="eventbus://verification-lost-bus-out" />
-      <log message="verification route-->uin-generator lost route ${bodyAs(String)}" />
+   <route id="mvs route-->uin-generation lost route">
+      <from uri="eventbus://mvs-lost-bus-out" />
+      <log message="mvs route-->uin-generator lost route ${bodyAs(String)}" />
       <choice>
          <when>
             <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == true)]</jsonpath>
@@ -313,11 +317,11 @@
          </when>
          <when>
             <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == false)]</jsonpath>
-            <to uri="workflow-cmd://complete-as-failed" />
+            <to uri="workflow-cmd://complete-as-rejected" />
             <to uri="workflow-cmd://anonymous-profile" />
          </when>
          <otherwise>
-            <to uri="eventbus://uin-generator-bus-in" />
+             <to uri="eventbus://uin-generator-bus-in" />
          </otherwise>
       </choice>
    </route>
@@ -445,11 +449,10 @@
          </otherwise>
       </choice>
    </route>
-   
-   <!-- finalization to Payment validator Route -->
-   <route id="finalization-lost-->payment-validator lost route">
+   <!-- finalization to Printing Route -->
+   <route id="finalization route-->printing-stage lost route">
       <from uri="eventbus://finalization-lost-bus-out" />
-      <log message="finalization-lost-->payment-validator lost route ${bodyAs(String)}" />
+      <log message="finalization-->printing-stage lost route ${bodyAs(String)}" />
       <choice>
          <when>
             <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == true)]</jsonpath>
@@ -466,36 +469,10 @@
             <to uri="workflow-cmd://anonymous-profile" />
          </when>
          <otherwise>
-            <to uri="eventbus://payment-validator-bus-in" />
+            <to uri="eventbus://printing-bus-in" />
          </otherwise>
       </choice>
    </route>
-   <!--- from payment go to replace validations stage; to cater for checking if indeed packet needed biometrics capture or not -->
-   <!-- payment validator to printing stage route -->
-   <route id="payment-validator-->printing-stage lost route">
-		<from uri="eventbus://payment-validator-lost-bus-out" />
-		<log message="payment-validator-->printing-stage new route ${bodyAs(String)}" />
-		<choice>
-			<when>
-				<jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == true)]</jsonpath>
-				<to uri="workflow-cmd://complete-as-failed" /> <!-- reprocess -->
-				<to uri="workflow-cmd://anonymous-profile" />
-			 </when>
-			 <when>
-				<jsonpath>$.[?(@['isValid'] == true &amp;&amp; @['internalError'] == true)]</jsonpath>
-				<to uri="workflow-cmd://mark-as-reprocess" />
-			 </when>
-			 <when>
-				<jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == false)]</jsonpath> <!-- can we access payment details status within tag -->
-				<to uri="workflow-cmd://complete-as-failed" /> 
-				<to uri="workflow-cmd://anonymous-profile" />
-			 </when>
-			 <otherwise>
-				<to uri="eventbus://printing-bus-in" />
-			 </otherwise>
-		</choice>
-    </route>
-   <!-- End of payment validator -->
    <route id="printing-stage--> lost route">
       <from uri="eventbus://printing-lost-bus-out" />
       <log message="printing-stage--> route ${bodyAs(String)}" />
@@ -503,7 +480,6 @@
          <when>
             <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == true)]</jsonpath>
             <to uri="workflow-cmd://complete-as-failed" />
-            <to uri="workflow-cmd://anonymous-profile" />
          </when>
          <when>
             <jsonpath>$.[?(@['isValid'] == true &amp;&amp; @['internalError'] == true)]</jsonpath>
@@ -512,7 +488,6 @@
          <when>
             <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == false)]</jsonpath>
             <to uri="workflow-cmd://complete-as-failed" />
-            <to uri="workflow-cmd://anonymous-profile" />
          </when>
          <otherwise>
             <to uri="workflow-cmd://complete-as-processed" />

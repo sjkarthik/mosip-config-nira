@@ -228,6 +228,9 @@ def getApplicantType() {
   {
     return "001";
   }
+ else if(userCase==FirstID){
+            return "800";
+  }
   else if(userCase==Update){
 	String result = "";
     if(addingName || removingName || changeOrderOfNames || completeChangeofName){
@@ -269,6 +272,9 @@ def getApplicantType() {
 	}
 	if (result.endsWith(",")) {
 		result = result.substring(0, result.length() - 1);
+	}
+	if(result==null || result==""){
+		result = "711";
 	}
 	
 	return result;
