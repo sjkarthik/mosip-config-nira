@@ -16,20 +16,7 @@
             <to uri="workflow-cmd://complete-as-failed" />
          </when>
          <otherwise>
-            <process ref="tokenGenerationProcessor" />
-	    <setHeader headerName="CamelHttpMethod">
-	      <constant>POST</constant>
-	    </setHeader>
-	    <setHeader headerName="Content-Type">
-	      <constant>application/json</constant>
-	    </setHeader>
-	    <setHeader headerName="Cookie">
-              <simple>${header.Cookie}</simple>
-            </setHeader>
-            <setBody>
-              <simple>${bodyAs(String)}</simple>
-            </setBody>
-            <to uri="http://regproc-group2.regproc/registrationprocessor/v1/securezone/notification" />
+	    <to uri="eventbus://securezone-notification-bus-in" />
          </otherwise>
       </choice>
    </route>
@@ -184,7 +171,7 @@
             <to uri="eventbus://introducer-validator-bus-in" />
          </when>
          <otherwise>
-            <to uri="eventbus://demo-dedupe-bus-in" />
+            <to uri="eventbus://quality-classifier-bus-in" />
          </otherwise>
       </choice>
    </route>
@@ -211,7 +198,7 @@
             <to uri="eventbus://introducer-validator-bus-in" />
          </when>
          <otherwise>
-            <to uri="eventbus://demo-dedupe-bus-in" />
+            <to uri="eventbus://quality-classifier-bus-in" />
          </otherwise>
       </choice>
    </route>
@@ -234,7 +221,7 @@
             <to uri="workflow-cmd://anonymous-profile" />
          </when>
          <otherwise>
-            <to uri="eventbus://demo-dedupe-bus-in" />
+            <to uri="eventbus://quality-classifier-bus-in" />
          </otherwise>
       </choice>
    </route>
@@ -349,7 +336,7 @@
    </route>
    <route id="bio-dedupe-->legacy-data route">
       <from uri="eventbus://bio-dedupe-new-bus-out" />
-      <log message="bio-dedupe-->uin-generation new route ${bodyAs(String)}" />
+      <log message="bio-dedupe-->legacy-data new route ${bodyAs(String)}" />
       <choice>
         <when>
             <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == true)]</jsonpath>
@@ -405,7 +392,7 @@
             <to uri="eventbus://mvs-bus-in" />
          </when>
 		  <when>
-            <jsonpath suppressExceptions="true">$.[?(@['tags']['ID_OBJECT-applicantCitizenshipType'] == 'By Birth /Descent' &amp;&amp; @['tags']['ID_OBJECT-foundLink'] != 'Y' &amp;&amp; @['tags']['ID_OBJECT-inDepthCitizenshipVerification'] == 'N'  )]</jsonpath>
+            <jsonpath suppressExceptions="true">$.[?(@['tags']['ID_OBJECT-userServiceType'] == 'By Birth /Descent' &amp;&amp; @['tags']['ID_OBJECT-foundLink'] != 'Y' &amp;&amp; @['tags']['ID_OBJECT-inDepthCitizenshipVerification'] == 'N'  )]</jsonpath>
             <to uri="eventbus://citizenship-verification-bus-in" />
          </when>
          <otherwise>
@@ -482,11 +469,11 @@
             <to uri="eventbus://mvs-bus-in" />
          </when>
         <when>
-            <jsonpath suppressExceptions="true">$.[?(@['tags']['ID_OBJECT-applicantCitizenshipType'] == 'By Birth /Descent' &amp;&amp; @['tags']['ID_OBJECT-foundLink'] != 'Y' &amp;&amp; @['tags']['ID_OBJECT-inDepthCitizenshipVerification'] == 'N'  )]</jsonpath>
+            <jsonpath suppressExceptions="true">$.[?(@['tags']['ID_OBJECT-userServiceType'] == 'By Birth /Descent' &amp;&amp; @['tags']['ID_OBJECT-foundLink'] != 'Y' &amp;&amp; @['tags']['ID_OBJECT-inDepthCitizenshipVerification'] == 'N'  )]</jsonpath>
             <to uri="eventbus://citizenship-verification-bus-in" />
          </when>
          <otherwise>
-             <to uri="eventbus://mvs-bus-in" />
+             <to uri="eventbus://uin-generator-bus-in" />
          </otherwise>
       </choice>
    </route>
