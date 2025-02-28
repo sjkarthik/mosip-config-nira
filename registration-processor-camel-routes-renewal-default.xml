@@ -227,7 +227,7 @@
    </route>
    <route id="quality-classifier-->legacy-data-validator route renewal route">
       <from uri="eventbus://quality-classifier-renewal-bus-out" />
-      <log message="quality-classifier-->legacy-data-validator route renewal route ${bodyAs(String)}" />
+      <log message="quality-classifier-->legacy-data-validator renewal route ${bodyAs(String)}" />
       <choice>
          <when>
             <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == true)]</jsonpath>
@@ -288,7 +288,7 @@
             <to uri="eventbus://biometric-authentication-bus-in" />
          </otherwise>
       </choice>
-	  </route>
+  </route>
    <route id="biometric-authentication-stage-->demo-dedupe renewal route">
       <from uri="eventbus://biometric-authentication-renewal-bus-out" />
       <log message="biometric-authentication-stage-->demo-dedupe renewal route ${bodyAs(String)}" />
