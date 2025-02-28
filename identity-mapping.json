@@ -166,7 +166,9 @@
         "placeOfBirthAddress": {
             "value": "applicantPlaceOfBirthDistrict,applicantPlaceOfBirthCounty,applicantPlaceOfBirthSubCounty,applicantPlaceOfBirthParish,applicantPlaceOfBirthVillage"
         },
-
+		"userService": {
+            "value": "userService"
+        },
 "userServiceType": {
             "value": "userServiceType"
         },
