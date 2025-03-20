@@ -805,6 +805,9 @@
     },
     "inDepthCitizenshipVerification": {
       "value": "inDepthCitizenshipVerification"
+    },
+	"userServiceTypeReplacement": {
+      "value": "userServiceTypeReplacement"
     }
   },
   "metaInfo": {
