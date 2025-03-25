@@ -87,6 +87,12 @@
     "userCase": {
       "value": "userCase"
     },
+    "citizenshipTypeCop": {
+      "value": "citizenshipTypeCop"
+    },
+    "changeInCitizenshipType": {
+      "value": "changeInCitizenshipType"
+    },
     "foundChildProofOfAdoption": {
       "value": "foundChildProofOfAdoption"
     },
