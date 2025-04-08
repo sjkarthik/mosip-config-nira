@@ -486,7 +486,7 @@
          </otherwise>
       </choice>
    </route>
-   <!-- finalization to processed->
+   <!-- finalization to processed-->
    <route id="finalization route-->printing-stage migrator route">
       <from uri="eventbus://finalization-migrator-bus-out" />
       <log message="finalization-->printing-stage route ${bodyAs(String)}" />
