@@ -818,7 +818,10 @@
     },
  	"userServiceTypeReplacement": {
        "value": "userServiceTypeReplacement"
-     }
+     },
+	 "PRNId": {
+            "value": "PRNId"
+        }
   },
   "metaInfo": {
     "value": "metaInfo"
