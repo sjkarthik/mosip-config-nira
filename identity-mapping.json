@@ -868,6 +868,9 @@
         },
         "poreg": {
             "value": "proofOfRegistration"
+        },
+        "ponid": {
+            "value": "proofOfNationalId"
         }
     },
     "attributeUpdateCountLimit": {
