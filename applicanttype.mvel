@@ -75,9 +75,9 @@ def getUserCase(identity) {
 }
 
 def getReplacementType(identity) {
-     if(identity.containsKey('replacementType')) {
-        Object val = identity.getOrDefault('replacementType', null);
-          System.out.println("replacementType" + val);
+     if(identity.containsKey('userServiceTypeReplacement')) {
+        Object val = identity.getOrDefault('userServiceTypeReplacement', null);
+          System.out.println("userServiceTypeReplacement" + val);
         return val == null ? null : (val instanceof String ? ; (String)val : (String) ((List)val).get(0).value);
     }
 
