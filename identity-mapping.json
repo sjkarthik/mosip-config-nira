@@ -874,6 +874,9 @@
         },
         "ponid": {
             "value": "proofOfNationalId"
+        },
+        "podmg": {
+            "value": "proofOfDamaged"
         }
     },
     "attributeUpdateCountLimit": {
