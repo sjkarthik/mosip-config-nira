@@ -880,6 +880,9 @@
     },
     "ponid": {
             "value": "proofOfNationalId"
+     },
+    "podmg": {
+            "value": "proofOfNationalId"
      }
   },
   "attributeUpdateCountLimit": {
