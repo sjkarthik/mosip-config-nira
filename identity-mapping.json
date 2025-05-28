@@ -876,14 +876,14 @@
       "value": "introducerProofOfSignature"
     },
     "poreg": {
-            "value": "proofOfRegistration"
+      "value": "proofOfRegistration"
     },
     "ponid": {
-            "value": "proofOfNationalId"
-     },
+      "value": "proofOfNationalId"
+    },
     "podmg": {
-            "value": "proofOfDamaged"
-     }
+      "value": "proofOfDamaged"
+    }
   },
   "attributeUpdateCountLimit": {
     "fullName": 2,
