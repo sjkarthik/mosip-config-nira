@@ -876,14 +876,92 @@
       "value": "introducerProofOfSignature"
     },
     "poreg": {
-            "value": "proofOfRegistration"
+      "value": "proofOfRegistration"
     },
     "ponid": {
-            "value": "proofOfNationalId"
-     },
+      "value": "proofOfNationalId"
+    },
     "podmg": {
-            "value": "proofOfDamaged"
-     }
+      "value": "proofOfDamaged"
+    },
+    "ponot": {
+      "value": "proofOfNoticeOfIntension"
+    },
+	"podp": {
+      "value": "proofOfDeedPoll"
+    },
+	"pocid": {
+	  "value": "proofOfCID"
+    },
+	"poip": {
+      "value": "proofOfInterpol"
+    },
+	"pobc": {
+      "value": "proofOfBirthCert"
+    },
+	"poad": {
+      "value": "proofOfAcademic"
+    },
+	"popass": {
+      "value": "proofOfPassport"
+    },
+	"povot": {
+      "value": "proofOfVoters"
+    },
+	"podri": {
+      "value": "proofOfDriving"
+    },
+	"pobap": {
+      "value": "proofOfBaptism"
+    },
+	"poor": {
+      "value": "proofOfOtherRelevant"
+    },
+	"polcl": {
+      "value": "proofOfLC1Letter"
+    },
+	"posta": {
+      "value": "proofOfStatutory"
+    },
+	"polcv": {
+      "value": "proofOfLCV"
+    },
+	"porec": {
+      "value": "proofOfRecLetter"
+    },
+	"poos": {
+      "value": "proofOfOtherSupporting"
+    },
+	"postp": {
+      "value": "proofOfStaDecalrationByParent"
+    },
+	"ponr": {
+      "value": "proofOfNotification"
+    },
+	"pocr": {
+      "value": "proofOfCbyReg"
+    },
+	"pocn": {
+      "value": "proofOfCbyNat"
+    },
+	"pocd": {
+      "value": "proofOfCbyDual"
+    },
+	"pomcert": {
+      "value": "proofOfMarCert"
+    },
+	"poda": {
+      "value": "proofOfDecAbsolute"
+    },
+	"podna": {
+      "value": "proofOfDNA"
+    },
+	"pobcbr": {
+      "value": "proofOfBirthCertBeforeReg"
+    },
+	"pocrep": {
+      "value": "proofOfCourtOrder"
+    }
   },
   "attributeUpdateCountLimit": {
     "fullName": 2,
