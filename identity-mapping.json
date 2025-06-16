@@ -875,6 +875,18 @@
         "ponid": {
             "value": "proofOfNationalId"
         },
+	"pomed": {
+            "value": "proofOfMedRep"
+        },
+	"pobapp": {
+            "value": "proofOfBAP"
+        },
+	"poall": {
+            "value": "proofOfAll"
+        },
+	"polr": {
+            "value": "proofOfLegalReport"
+        },
         "podmg": {
             "value": "proofOfDamaged"
         },
@@ -930,7 +942,7 @@
             "value": "proofOfStaDecalrationByParent"
         },
 		"ponr": {
-            "value": "proofOfNotification"
+            "value": "proofOfBirthNotification"
         },
 		"pocr": {
             "value": "proofOfCbyReg"
