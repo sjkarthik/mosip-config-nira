@@ -968,32 +968,6 @@
 	"poda": {
       "value": "proofOfDecAbsolute"
     },
-	  "poanid": {
-            "value": "proofOfAppNationalID"
-        },
-		"popnid": {
-            "value": "proofOfPNationalID"
-        },
-		"ponpbr": {
-            "value": "proofOfNIDPBR"
-        },
-		"poclei": {
-            "value": "proofOfCLEI"
-        },
-		"poppd": {
-            "value": "proofOfPPDetails"
-        },
-		"poncert": {
-            "value": "proofOfNatCert"
-        },
-		"popir": {
-            "value": "proofOfPrevRec"
-        },
-		"popolrep": {
-            "value": "proofOfPOLREP"
-        },
-		"pofall": {
-            "value": "proofOfFAll"
 	"podna": {
       "value": "proofOfDNA"
     },
@@ -1002,6 +976,33 @@
     },
 	"pocrep": {
       "value": "proofOfCourtOrder"
+    },
+	"poanid": {
+        "value": "proofOfAppNationalID"
+    },
+	"popnid": {
+        "value": "proofOfPNationalID"
+    },
+	"ponpbr": {
+        "value": "proofOfNIDPBR"
+    },
+	"poclei": {
+        "value": "proofOfCLEI"
+    },
+	"poppd": {
+        "value": "proofOfPPDetails"
+    },
+	"poncert": {
+        "value": "proofOfNatCert"
+    },
+	"popir": {
+        "value": "proofOfPrevRec"
+    },
+	"popolrep": {
+        "value": "proofOfPOLREP"
+    },
+	"pofall": {
+        "value": "proofOfFAll"
     }
   },
   "attributeUpdateCountLimit": {
