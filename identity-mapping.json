@@ -968,6 +968,32 @@
 	"poda": {
       "value": "proofOfDecAbsolute"
     },
+	  "poanid": {Add commentMore actions
+            "value": "proofOfAppNationalID"
+        },
+		"popnid": {
+            "value": "proofOfPNationalID"
+        },
+		"ponpbr": {
+            "value": "proofOfNIDPBR"
+        },
+		"poclei": {
+            "value": "proofOfCLEI"
+        },
+		"poppd": {
+            "value": "proofOfPPDetails"
+        },
+		"poncert": {
+            "value": "proofOfNatCert"
+        },
+		"popir": {
+            "value": "proofOfPrevRec"
+        },
+		"popolrep": {
+            "value": "proofOfPOLREP"
+        },
+		"pofall": {
+            "value": "proofOfFAll"
 	"podna": {
       "value": "proofOfDNA"
     },
