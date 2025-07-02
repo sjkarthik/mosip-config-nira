@@ -235,7 +235,7 @@
          </otherwise>
       </choice>
    </route>
-    <route id="legacy-data-validator-stage-->biometric-authentication firstid route">
+   <route id="legacy-data-validator-stage-->biometric-authentication firstid route">
       <from uri="eventbus://legacy-data-validator-firstid-bus-out" />
       <log message="legacy-data-validator-stage-->biometric-authentication route ${bodyAs(String)}" />
       <choice>
@@ -252,6 +252,10 @@
             <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == false)]</jsonpath>
             <to uri="workflow-cmd://complete-as-rejected" />
             <to uri="workflow-cmd://anonymous-profile" />
+         </when>
+	<when>
+            <jsonpath>$.[?(@['onHold'] == true)]</jsonpath>
+	  <log message="On hold the packet" />
          </when>
          <otherwise>
             <to uri="eventbus://biometric-authentication-bus-in" />
@@ -514,12 +518,12 @@
             <jsonpath>$.[?(@['isValid'] == true &amp;&amp; @['internalError'] == true)]</jsonpath>
             <to uri="workflow-cmd://mark-as-reprocess" />
          </when>
-		  <when>
+         <when>
             <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == false)]</jsonpath>
             <to uri="workflow-cmd://complete-as-failed" />
             <to uri="workflow-cmd://anonymous-profile" />
          </when>
-           <when>
+		  <when>
              <jsonpath suppressExceptions="true">$.[?(@['tags']['AGE_GROUP'] == 'ADULT' )]</jsonpath>
            <to uri="eventbus://printing-bus-in" />
           </when>
