@@ -1,6 +1,6 @@
 {
     "ida-mapping": {
-        "fullName": [
+        "name": [
             "surname,givenName,otherNames,maidenName,previousName"
         ],
 	"surname": [
