@@ -212,24 +212,13 @@ def getAgeCode(identity) {
         String rangeStr = (String)ageGroups.get(groupName);
 
         if (rangeStr != null && rangeStr.contains('-')) {
-            String[] range = rangeStr.split('-');
-            if (range.length == 2) {
-                try {
-                    double startAge = Double.parseDouble(range[0]);
-                    double endAge = Double.parseDouble(range[1]);
+            String[] range = ((String)ageGroups.get(groupName)).split('-');
+            double startAge = Double.parseDouble(range[0]);
+            double endAge = Double.parseDouble(range[1]);
 
-                    if (exactAge >= startAge && exactAge <= endAge) {
-                        ageGroup = groupName;
-                        break;
-                    }
-                } catch (Exception e) {
-                    System.out.println("Invalid age range for group: " + groupName + " -> " + rangeStr);
-                }
-            } else {
-                System.out.println("Invalid range format for group: " + groupName + " -> " + rangeStr);
+            if (exactAge >= startAge && exactAge <= endAge) {
+                ageGroup = groupName;
             }
-        } else {
-            System.out.println("Skipping invalid or empty range for group: " + groupName + " -> " + rangeStr);
         }
     }
 
