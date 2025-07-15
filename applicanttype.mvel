@@ -191,34 +191,54 @@ def getGenderType(identity) {
 }
 
 def getAgeCode(identity) {
-    if(ageGroups == null || !identity.containsKey('dateOfBirth'))
+    if (ageGroups == null || !identity.containsKey('dateOfBirth')) {
         return null;
+    }
 
     String dob = identity.get('dateOfBirth');
-    if(!pattern.matcher(dob).matches())
+    if (!pattern.matcher(dob).matches()) {
         return null;
-        
+    }
+
     LocalDate date = LocalDate.parse(dob, DateTimeFormatter.ofPattern(DATE_PATTERN));
     LocalDate currentDate = LocalDate.now(ZoneId.of("UTC"));
-    
-    if(date.isAfter(currentDate)) { return 'KER-MSD-151'; }
-    
+
+    if (date.isAfter(currentDate)) {
+        return 'KER-MSD-151';
+    }
+
     int ageInYears = Period.between(date, currentDate).getYears();
     int ageInMonths = (ageInYears * 12) + Period.between(date, currentDate).getMonths();
     double exactAge = ageInMonths / 12.0;
-	
+
     String ageGroup = null;
-    for(String groupName : ageGroups.keySet()) {
-        String[] range = ((String)ageGroups.get(groupName)).split('-');
-		double startAge = Double.parseDouble(range[0]);
-		double endAge = Double.parseDouble(range[1]);
-        if (exactAge >= startAge && exactAge <= endAge) {
-            ageGroup = groupName;
-            break;
+
+    for (String groupName : ageGroups.keySet()) {
+        String rangeStr = (String)ageGroups.get(groupName);
+
+        if (rangeStr != null && rangeStr.contains("-")) {
+            String[] range = rangeStr.split("-");
+            if (range.length == 2) {
+                try {
+                    double startAge = Double.parseDouble(range[0]);
+                    double endAge = Double.parseDouble(range[1]);
+
+                    if (exactAge >= startAge && exactAge <= endAge) {
+                        ageGroup = groupName;
+                        break;
+                    }
+                } catch (Exception e) {
+                    System.out.println("Invalid age range for group: " + groupName + " -> " + rangeStr);
+                }
+            } else {
+                System.out.println("Invalid range format for group: " + groupName + " -> " + rangeStr);
+            }
+        } else {
+            System.out.println("Skipping invalid or empty range for group: " + groupName + " -> " + rangeStr);
         }
     }
 
-   return ageGroup == null ? null : ageGroup;
+    return ageGroup == null ? null : ageGroup;
 }
 
 def getAgeCop(identity) {
