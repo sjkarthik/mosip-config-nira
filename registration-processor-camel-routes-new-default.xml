@@ -292,7 +292,15 @@
             <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == false)]</jsonpath>
             <to uri="workflow-cmd://complete-as-rejected" />
             <to uri="workflow-cmd://anonymous-profile" />
+        </when>
+		  <when>
+            <jsonpath suppressExceptions="true">$.[?(@['messageBusAddress']['address'] == 'mvs-bus-in')]</jsonpath>
+            <to uri="eventbus://mvs-bus-in" />
          </when>
+		  <when>
+            <jsonpath suppressExceptions="true">$.[?(@['tags']['AGE_GROUP'] == 'CHILD')]</jsonpath>
+            <to uri="eventbus://uin-generator-bus-in" />
+		 </when>
          <when>
             <jsonpath suppressExceptions="true">$.[?(@['messageBusAddress']['address'] == 'abis-handler-bus-in')]</jsonpath>
             <to uri="eventbus://abis-handler-bus-in" />
