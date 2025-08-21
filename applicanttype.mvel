@@ -9,7 +9,8 @@ import java.time.temporal.ValueRange;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-String CHILD = "INFANT";
+String CHILD = "CHILD";
+String INFANT = "INFANT";
 String ADULT = "ADULT";
 String MINOR = "MINOR";
 String MALE = 'MLE';
@@ -194,25 +195,34 @@ def getAgeCode(identity) {
         return null;
 
     String dob = identity.get('dateOfBirth');
-    if(!pattern.matcher(dob).matches())
+    if (!pattern.matcher(dob).matches())
         return null;
-        
+
     LocalDate date = LocalDate.parse(dob, DateTimeFormatter.ofPattern(DATE_PATTERN));
     LocalDate currentDate = LocalDate.now(ZoneId.of("UTC"));
-    
-    if(date.isAfter(currentDate)) { return 'KER-MSD-151'; }
-    
+
+    if (date.isAfter(currentDate)) { return 'KER-MSD-151'; }
+
     int ageInYears = Period.between(date, currentDate).getYears();
-    
+    int ageInMonths = (ageInYears * 12) + Period.between(date, currentDate).getMonths();
+    double exactAge = ageInMonths / 12.0;
+
     String ageGroup = null;
-    for(String groupName : ageGroups.keySet()) {
-        String[] range = ((String)ageGroups.get(groupName)).split('-');
-        if(ValueRange.of(Long.valueOf(range[0]), Long.valueOf(range[1])).isValidIntValue(ageInYears)) {
-            ageGroup = groupName;
+    for (String groupName : ageGroups.keySet()) {
+        String rangeStr = (String)ageGroups.get(groupName);
+
+        if (rangeStr != null && rangeStr.contains('-')) {
+            String[] range = ((String)ageGroups.get(groupName)).split('-');
+            double startAge = Double.parseDouble(range[0]);
+            double endAge = Double.parseDouble(range[1]);
+
+            if (exactAge >= startAge && exactAge <= endAge) {
+                ageGroup = groupName;
+            }
         }
     }
 
-   return ageGroup == null ? null : ageGroup;
+    return ageGroup == null ? null : ageGroup;
 }
 
 def getAgeCop(identity) {
@@ -376,11 +386,11 @@ def getApplicantType() {
   {
     return "035";
   }	
-  else if(userCase==Update  && fatherNIN==null && motherNIN==null && ageCode == CHILD  )
+  else if(userCase==Update  && fatherNIN==null && motherNIN==null && (ageCode == CHILD || ageCode == INFANT)  )
   {
    return "003";
   }
-  else if(userCase==Update && (fatherNIN != null || motherNIN !=null) && ageCode == CHILD  )
+  else if(userCase==Update && (fatherNIN != null || motherNIN !=null) && (ageCode == CHILD || ageCode == INFANT)  )
   {
    return "022";
   }
@@ -398,7 +408,7 @@ else if(userCase==Update  && (fatherNIN != null || motherNIN !=null) && ageCode 
   {
     return "004";
   } 
-else if( userCase==New && citizenshipType==ByBirthIndigenousCommunity && fatherNIN==null && motherNIN==null && ageCode == CHILD && foundLink )
+else if( userCase==New && citizenshipType==ByBirthIndigenousCommunity && fatherNIN==null && motherNIN==null && (ageCode == CHILD || ageCode == INFANT) && foundLink )
   {
     return "034";
   } 
@@ -406,11 +416,11 @@ else if(userCase==Update  && (fatherNIN != null || motherNIN !=null) && ageCode 
   {
    return "024";
   }
-  else if(userCase==New && citizenshipType==null && fatherNIN==null && motherNIN==null && ageCode == CHILD  )
+  else if(userCase==New && citizenshipType==null && fatherNIN==null && motherNIN==null && (ageCode == CHILD || ageCode == INFANT)  )
   {
    return "033";
   }
-  else if(userCase==New && citizenshipType==ByBirthIndigenousCommunity && fatherNIN==null && motherNIN==null && ageCode == CHILD  )
+  else if(userCase==New && citizenshipType==ByBirthIndigenousCommunity && fatherNIN==null && motherNIN==null && (ageCode == CHILD || ageCode == INFANT)  )
   {
    return "005";
   }
@@ -429,7 +439,7 @@ else if(userCase==Update  && (fatherNIN != null || motherNIN !=null) && ageCode 
   {
     return "006";
   } 
-     else if(userCase==New && citizenshipType==ByBirthIndigenousCommunity && (fatherNIN != null || motherNIN !=null)   && ageCode == CHILD  )
+     else if(userCase==New && citizenshipType==ByBirthIndigenousCommunity && (fatherNIN != null || motherNIN !=null)   && (ageCode == CHILD || ageCode == INFANT)  )
   {
    return "007";
   }
@@ -441,7 +451,7 @@ else if(userCase==Update  && (fatherNIN != null || motherNIN !=null) && ageCode 
     return "008";
   } 
 
-  else if(userCase==New && citizenshipType==ByNaturalisation && fatherNIN==null && motherNIN==null && ageCode == CHILD  )
+  else if(userCase==New && citizenshipType==ByNaturalisation && fatherNIN==null && motherNIN==null && (ageCode == CHILD || ageCode == INFANT)  )
   {
    return "009";
   }
@@ -454,7 +464,7 @@ else if(userCase==Update  && (fatherNIN != null || motherNIN !=null) && ageCode 
     return "010";
   } 
   
-  else if(userCase==New && citizenshipType==ByNaturalisation && (fatherNIN != null || motherNIN !=null)   && ageCode == CHILD  )
+  else if(userCase==New && citizenshipType==ByNaturalisation && (fatherNIN != null || motherNIN !=null)   && (ageCode == CHILD || ageCode == INFANT)  )
   {
    return "011";
   }
@@ -468,11 +478,11 @@ else if(userCase==Update  && (fatherNIN != null || motherNIN !=null) && ageCode 
     return "012";
   } 
 
-   else if(userCase==New && citizenshipType==ByRegistration && fatherNIN==null && motherNIN==null && ageCode == CHILD  )
+   else if(userCase==New && citizenshipType==ByRegistration && fatherNIN==null && motherNIN==null && (ageCode == CHILD || ageCode == INFANT)  )
   {
    return "013";
   }
-else if(userCase==New && citizenshipType==ByRegistration && (fatherNIN != null || motherNIN !=null)   && ageCode == CHILD  )
+else if(userCase==New && citizenshipType==ByRegistration && (fatherNIN != null || motherNIN !=null)   && (ageCode == CHILD || ageCode == INFANT)  )
   {
    return "015";
   }
@@ -494,7 +504,7 @@ else if(userCase==New && citizenshipType==ByRegistration && (fatherNIN != null |
   {
     return "016";
   } 
-   else if(userCase==New && citizenshipType==dualCitizenship && fatherNIN==null && motherNIN==null && ageCode == CHILD  )
+   else if(userCase==New && citizenshipType==dualCitizenship && fatherNIN==null && motherNIN==null && (ageCode == CHILD || ageCode == INFANT)  )
   {
    return "017";
   }
@@ -512,7 +522,7 @@ else if(userCase==New && citizenshipType==ByRegistration && (fatherNIN != null |
   {
     return "018";
   } 
-  else if(userCase==New && citizenshipType==dualCitizenship && (fatherNIN != null || motherNIN !=null)   && ageCode == CHILD  )
+  else if(userCase==New && citizenshipType==dualCitizenship && (fatherNIN != null || motherNIN !=null)   && (ageCode == CHILD || ageCode == INFANT)  )
   {
    return "019";
   }
