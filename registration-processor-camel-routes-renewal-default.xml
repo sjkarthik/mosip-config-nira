@@ -293,6 +293,10 @@
       <from uri="eventbus://biometric-authentication-renewal-bus-out" />
       <log message="biometric-authentication-stage-->demo-dedupe renewal route ${bodyAs(String)}" />
       <choice>
+		 <when>
+            <jsonpath>$.[?(@['messageBusAddress']['address'] == 'manual-adjudication-bus-in')]</jsonpath>
+            <to uri="eventbus://manual-adjudication-bus-in" />
+         </when>
          <when>
             <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == true)]</jsonpath>
             <to uri="workflow-cmd://complete-as-failed" />
