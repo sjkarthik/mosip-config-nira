@@ -325,6 +325,10 @@
       <log message="biometric-authentication-stage-->demo-dedupe update route ${bodyAs(String)}" />
       <choice>
          <when>
+            <jsonpath>$.[?(@['messageBusAddress']['address'] == 'manual-adjudication-bus-in')]</jsonpath>
+            <to uri="eventbus://manual-adjudication-bus-in" />
+         </when>
+         <when>
             <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == true)]</jsonpath>
             <to uri="workflow-cmd://complete-as-failed" />
             <to uri="workflow-cmd://anonymous-profile" />
@@ -491,6 +495,10 @@
       <from uri="eventbus://manual-adjudication-update-bus-out" />
       <log message="manual-adjudication-->uin-generation update route ${bodyAs(String)}" />
       <choice>
+         <when>
+            <jsonpath>$.[?(@['messageBusAddress']['address'] == 'bio-dedupe-bus-in')]</jsonpath>
+            <to uri="eventbus://bio-dedupe-bus-in" />
+         </when>
          <when>
             <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == true)]</jsonpath>
             <to uri="workflow-cmd://complete-as-failed" />
