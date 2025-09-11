@@ -1,8 +1,23 @@
 {
     "ida-mapping": {
-        "name": [
+        "fullName": [
             "surname,givenName,otherNames,maidenName,previousName"
         ],
+	"surname": [
+	     "surname"
+	],
+	"givenName": [
+	    "givenName"
+	],
+	"otherNames": [
+	    "otherNames"
+	],
+	"maidenName": [
+            "maidenName"
+	],
+	"previousName": [
+	    "previousName"
+	],
         "dob": [
             "dateOfBirth"
         ],
