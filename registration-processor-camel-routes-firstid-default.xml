@@ -326,8 +326,8 @@
       </choice>
    </route>
      <route id="bio-dedupe-->citizenship-verification firstid route">
-      <from uri="eventbus://legacy-data-firstid-bus-out" />
-      <log message="bio-dedupe-->uin-generator firstid route ${bodyAs(String)}" />
+      <from uri="eventbus://bio-dedupe-firstid-bus-out" />
+      <log message="bio-dedupe-->citizenship-verification firstid route ${bodyAs(String)}" />
       <choice>
          <when>
             <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == true)]</jsonpath>
