@@ -441,14 +441,10 @@
          </otherwise>
       </choice>
    </route>
-   <route id="manual-adjudication-->uin-generation firstid route">
+   <route id="manual-adjudication-->citizenship-verification firstid route">
       <from uri="eventbus://manual-adjudication-firstid-bus-out" />
       <log message="manual-adjudication-->uin-generation firstid route ${bodyAs(String)}" />
       <choice>
-         <when>
-            <jsonpath>$.[?(@['messageBusAddress']['address'] == 'bio-dedupe-bus-in')]</jsonpath>
-            <to uri="eventbus://bio-dedupe-bus-in" />
-         </when>
          <when>
             <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == true)]</jsonpath>
             <to uri="workflow-cmd://complete-as-failed" />
@@ -463,8 +459,12 @@
             <to uri="workflow-cmd://complete-as-rejected" />
             <to uri="workflow-cmd://anonymous-profile" />
          </when>
+        <when>
+            <jsonpath suppressExceptions="true">$.[?( @['tags']['ID_OBJECT-inDepthCitizenshipVerification'] == 'Y'  )]</jsonpath>
+            <to uri="eventbus://mvs-bus-in" />
+         </when>
          <otherwise>
-            <to uri="eventbus://uin-generator-bus-in" />
+             <to uri="eventbus://mvs-bus-in" />
          </otherwise>
       </choice>
    </route>
