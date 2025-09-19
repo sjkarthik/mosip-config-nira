@@ -302,10 +302,6 @@
    			 </jsonpath><to uri="eventbus://citizenship-verification-bus-in" />
 		 </when>
 		  <when>
-            <jsonpath suppressExceptions="true">$.[?(@['tags']['AGE_GROUP'] == 'CHILD')]</jsonpath>
-            <to uri="eventbus://uin-generator-bus-in" />
-		 </when>
-         <when>
             <jsonpath suppressExceptions="true">$.[?(@['messageBusAddress']['address'] == 'abis-handler-bus-in')]</jsonpath>
             <to uri="eventbus://abis-handler-bus-in" />
          </when>
