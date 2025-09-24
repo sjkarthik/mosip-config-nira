@@ -427,7 +427,7 @@
             <to uri="workflow-cmd://anonymous-profile" />
          </when>
 		 <when>
-           <jsonpath suppressExceptions="true">$.[?(@['messageBusAddress']['address'] == 'citizenship-verification-bus-in')]</jsonpath>
+           <jsonpath suppressExceptions="true">$.[?(@['messageBusAddress']['address'] == 'citizenship-verification-bus-in' &amp;&amp; @['tags']['ID_OBJECT-userServiceType'] == 'By Birth /Descent')]</jsonpath>
            <to uri="eventbus://citizenship-verification-bus-in" />
          </when>
          <otherwise>
