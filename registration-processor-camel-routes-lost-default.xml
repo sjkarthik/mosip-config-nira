@@ -431,6 +431,10 @@
             <to uri="workflow-cmd://complete-as-rejected" />
             <to uri="workflow-cmd://anonymous-profile" />
          </when>
+		  <when>
+            <jsonpath suppressExceptions="true">$.[?( @['tags']['ID_OBJECT-inDepthCitizenshipVerification'] == 'Y' || @['tags']['ID_OBJECT-userServiceTypeReplacement'] == 'Lost' )]</jsonpath>
+            <to uri="eventbus://mvs-bus-in" />
+         </when>
          <otherwise>
             <to uri="eventbus://uin-generator-bus-in" />
          </otherwise>
