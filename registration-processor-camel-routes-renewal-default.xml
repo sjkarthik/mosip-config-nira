@@ -473,8 +473,8 @@
       <log message="manual-adjudication-->uin-generation renewal route ${bodyAs(String)}" />
       <choice>
          <when>
-            <jsonpath>$.[?(@['messageBusAddress']['address'] == 'bio-dedupe-bus-in')]</jsonpath>
-            <to uri="eventbus://bio-dedupe-bus-in" />
+            <jsonpath>$.[?(@['messageBusAddress']['address'] == 'demo-dedupe-bus-in')]</jsonpath>
+            <to uri="eventbus://demo-dedupe-bus-in" />
          </when>
          <when>
             <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == true)]</jsonpath>
