@@ -3,6 +3,9 @@
         "fullName": [
             "surname,givenName,otherNames,maidenName,previousName"
         ],
+      "name": [
+        "surname,givenName,otherNames,maidenName,previousName"
+      ],
 	"surname": [
 	     "surname"
 	],
