@@ -313,7 +313,7 @@
             <to uri="eventbus://mvs-bus-in" />
          </when>
          <otherwise>
-            <to uri="eventbus://mvs-bus-in" />
+			<to uri="eventbus://uin-generator-bus-in" /> 
          </otherwise>
       </choice>
    </route>
