@@ -1000,7 +1000,16 @@
         },
 		"pofall": {
             "value": "proofOfFAll"
-        }		
+        },
+		"pocif":{
+			"value": "proofOfImmigrationFacility"
+		},
+		"popr": {
+            "value": "proofOfPayment"
+        },,
+		"pocop": {
+            "value": "proofOfPassportCopy"
+        },
     },
     "attributeUpdateCountLimit": {
         "fullName": 2,
