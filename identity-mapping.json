@@ -60,6 +60,9 @@
         "vid": {
             "value": "VID"
         },
+		"AIN": {
+            "value": "AIN"
+        },
         "NIN": {
             "value": "NIN"
         },
