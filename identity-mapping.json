@@ -1009,7 +1009,7 @@
         },
 		"pocop": {
             "value": "proofOfPassportCopy"
-        },
+        }
     },
     "attributeUpdateCountLimit": {
         "fullName": 2,
