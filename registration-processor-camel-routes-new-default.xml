@@ -361,7 +361,7 @@
             <to uri="workflow-cmd://anonymous-profile" />
          </when>
          <when>
-            <jsonpath suppressExceptions="true">$.[?(@['messageBusAddress']['address'] == 'verification-bus-in')]</jsonpath>
+            <jsonpath suppressExceptions="true">$.[?(@['messageBusAddress']['address'] == 'verification-bus-in' || @['tags']['ID_OBJECT-userServiceType'] == 'Alien New Registration')]</jsonpath>
             <to uri="eventbus://mvs-bus-in" />
          </when>
          <when>
