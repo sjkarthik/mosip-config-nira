@@ -25,6 +25,7 @@ String Lost= 	 "LOST";
 String Update =  "UPDATE";
 String FirstID = "FIRSTID";
 String AlienNew = "ALIENNEW";
+String AlienRenewal = "ALIENRENEWAL";
 
 String dualCitizenship= "DLN";
 String ByBirthIndigenousCommunity = "CBBI";
@@ -293,7 +294,7 @@ def getApplicantType() {
  else if(userCase==FirstID){
             return "800";
   }
-  else if(userCase==AlienNew){
+  else if(userCase==AlienNew || userCase == AlienRenewal){
 	return "101";
   }
   else if(userCase==Update){
