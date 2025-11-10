@@ -414,6 +414,10 @@
             <to uri="eventbus://abis-handler-bus-in" />
          </when> 
 		 <when>
+            <jsonpath suppressExceptions="true">$.[?(@['tags']['ID_OBJECT-userServiceType'] == 'Renewal of Alien')]</jsonpath>
+            <to uri="eventbus://mvs-bus-in" />
+         </when>
+		 <when>
             <jsonpath suppressExceptions="true">$.[?( @['tags']['ID_OBJECT-inDepthCitizenshipVerification'] == 'Y'  )]</jsonpath>
             <to uri="eventbus://mvs-bus-in" />
          </when>
