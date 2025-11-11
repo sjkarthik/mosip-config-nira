@@ -26,7 +26,7 @@ String Update =  "UPDATE";
 String FirstID = "FIRSTID";
 String AlienNew = "ALIENNEW";
 String AlienRenewal = "ALIENRENEWAL";
-String AlienReplacement= "ALIENREPLACEMENT";
+String AlienReplacement= "ALIENLOST";
 
 String dualCitizenship= "DLN";
 String ByBirthIndigenousCommunity = "CBBI";
@@ -295,8 +295,11 @@ def getApplicantType() {
  else if(userCase==FirstID){
             return "800";
   }
-  else if(userCase==AlienNew || userCase == AlienRenewal || userCase == AlienReplacement){
+ else if(userCase==AlienNew || userCase == AlienRenewal || userCase == AlienCancellation){
 	return "101";
+  }
+  else if(userCase == AlienReplacement){
+	return "102";
   }
   else if(userCase==Update){
 	String result = "";
