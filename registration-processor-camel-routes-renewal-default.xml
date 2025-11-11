@@ -249,6 +249,10 @@
             <setProperty propertyName="PAUSE_FOR"><constant>1296000</constant></setProperty>
             <to uri="workflow-cmd://pause-and-request-additional-info" />
          </when>
+		 <when>
+            <jsonpath suppressExceptions="true">$.[?(@['tags']['Biometric_Quality-Iris'] in ['level-4','level-5','level-6','level-7','level-8','level-9','level-10','--Biometrics-Not-Available--'] &amp;&amp; @['tags']['Biometric_Quality-Finger'] in ['level-4','level-5','level-6','level-7','level-8','level-9','level-10','--Biometrics-Not-Available--'] &amp;&amp; @['tags']['Biometric_Quality-Face'] in ['level-4','level-5','level-6','level-7','level-8','level-9','level-10','--Biometrics-Not-Available--'] &amp;&amp; @['tags']['ID_OBJECT-userServiceType'] == 'Renewal of Alien')]</jsonpath>
+              <to uri="eventbus://biometric-authentication-bus-in" />
+         </when>
          <when>
             <jsonpath suppressExceptions="true">$.[?(@['tags']['Biometric_Quality-Iris'] in ['level-4','level-5','level-6','level-7','level-8','level-9','level-10','--Biometrics-Not-Available--'] &amp;&amp; @['tags']['Biometric_Quality-Finger'] in ['level-3','level-4','level-5','level-6','level-7','level-8','level-9','level-10','--Biometrics-Not-Available--'] &amp;&amp; @['tags']['Biometric_Quality-Face'] in ['level-4','level-5','level-6','level-7','level-8','level-9','level-10','--Biometrics-Not-Available--'])]</jsonpath>
               <to uri="eventbus://legacy-data-validator-bus-in" />
@@ -417,6 +421,10 @@
             <jsonpath suppressExceptions="true">$.[?( @['tags']['ID_OBJECT-inDepthCitizenshipVerification'] == 'Y'  )]</jsonpath>
             <to uri="eventbus://mvs-bus-in" />
          </when>
+		 <when>
+            <jsonpath suppressExceptions="true">$.[?(@['tags']['ID_OBJECT-userServiceType'] == 'Renewal of Alien')]</jsonpath>
+            <to uri="eventbus://mvs-bus-in" />
+         </when>
          <otherwise>
             <to uri="eventbus://uin-generator-bus-in" />
          </otherwise>
@@ -562,10 +570,10 @@
             <to uri="workflow-cmd://complete-as-failed" />
             <to uri="workflow-cmd://anonymous-profile" />
          </when>
-        <when>
-             <jsonpath suppressExceptions="true">$.[?(@['tags']['AGE_GROUP'] == 'ADULT' )]</jsonpath>
-           <to uri="eventbus://printing-bus-in" />
-          </when>
+         <when>
+            <jsonpath suppressExceptions="true">$.[?(@['tags']['AGE_GROUP'] == 'ADULT' || @['tags']['ID_OBJECT-userServiceType'] == 'Renewal of Alien')] </jsonpath>
+            <to uri="eventbus://printing-bus-in" />
+         </when>
          <otherwise>
             <to uri="workflow-cmd://complete-as-processed" />
             <to uri="workflow-cmd://anonymous-profile" />
