@@ -129,9 +129,9 @@
          </otherwise>
       </choice>
    </route>
-	<route id="payment-validator-->cmd-validator update route">
- 		<from uri="eventbus://payment-validator-update-bus-out" />
- 		<log message="payment-validator-->cmd-validator update route ${bodyAs(String)}" />
+	<route id="payment-validator-->cmd-validator new route">
+ 		<from uri="eventbus://payment-validator-new-bus-out" />
+ 		<log message="payment-validator-->cmd-validator new route ${bodyAs(String)}" />
  		<choice>
  			 <when>
             <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == true)]</jsonpath>
