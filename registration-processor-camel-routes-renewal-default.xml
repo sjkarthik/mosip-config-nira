@@ -107,11 +107,38 @@
             <to uri="workflow-cmd://complete-as-failed" />
             <to uri="workflow-cmd://anonymous-profile" />
          </when>
+		  <when>
+            <jsonpath suppressExceptions="true">$.[?(@['tags']['PRN_AVAILABILITY'] == 'true')]</jsonpath>
+              <to uri="eventbus://payment-validator-bus-in" />
+         </when>
          <otherwise>
             <to uri="eventbus://c-m-d-validator-bus-in" />
          </otherwise>
       </choice>
    </route>
+	<route id="payment-validator-->cmd-validator renewal route">
+ 		<from uri="eventbus://payment-validator-renewal-bus-out" />
+ 		<log message="payment-validator-->cmd-validator renewal route ${bodyAs(String)}" />
+ 		<choice>
+ 			 <when>
+            <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == true)]</jsonpath>
+            <to uri="workflow-cmd://complete-as-failed" />
+            <to uri="workflow-cmd://anonymous-profile" />
+         </when>
+         <when>
+            <jsonpath>$.[?(@['isValid'] == true &amp;&amp; @['internalError'] == true)]</jsonpath>
+            <to uri="workflow-cmd://mark-as-reprocess" />
+         </when>
+         <when>
+            <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == false)]</jsonpath>
+            <to uri="workflow-cmd://complete-as-failed" />
+            <to uri="workflow-cmd://anonymous-profile" />
+           </when>
+ 			 <otherwise>
+ 				<to uri="eventbus://c-m-d-validator-bus-in" />
+ 			 </otherwise>
+ 		</choice>
+     </route>
    <route id="cmd-validator-->operator-validator renewal route">
       <from uri="eventbus://c-m-d-validator-renewal-bus-out" />
       <log message="cmd-validator-->operator-validator/supervisor-validator renewal route ${bodyAs(String)}" />
