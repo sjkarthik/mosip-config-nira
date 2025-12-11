@@ -88,8 +88,35 @@
             <to uri="workflow-cmd://complete-as-rejected" />
             <to uri="workflow-cmd://anonymous-profile" />
          </when>
+		 <when>
+            <jsonpath suppressExceptions="true">$.[?(@['messageBusAddress']['address'] == 'mvs-bus-in')]</jsonpath>
+            <to uri="eventbus://mvs-bus-in" />
+         </when>
          <otherwise>
             <to uri="eventbus://uin-generator-bus-in" />
+         </otherwise>
+      </choice>
+   </route>
+   <route id="mvs route-->uin-generation new route">
+      <from uri="eventbus://mvs-new-bus-out" />
+      <log message="mvs route-->uin-generator new route ${bodyAs(String)}" />
+      <choice>
+         <when>
+            <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == true)]</jsonpath>
+            <to uri="workflow-cmd://complete-as-failed" />
+            <to uri="workflow-cmd://anonymous-profile" />
+         </when>
+         <when>
+            <jsonpath>$.[?(@['isValid'] == true &amp;&amp; @['internalError'] == true)]</jsonpath>
+            <to uri="workflow-cmd://mark-as-reprocess" />
+         </when>
+         <when>
+            <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == false)]</jsonpath>
+            <to uri="workflow-cmd://complete-as-rejected" />
+            <to uri="workflow-cmd://anonymous-profile" />
+         </when>
+         <otherwise>
+             <to uri="eventbus://uin-generator-bus-in" />
          </otherwise>
       </choice>
    </route>
@@ -118,10 +145,9 @@
          </otherwise>
       </choice>
    </route>
-   <!-- finalization to credential-requestor Route -->
-   <route id="finalization route-->credential-requestor-stage crvs_new route">
+   <route id="finalization route-->printing-stage crvs_new route">
       <from uri="eventbus://finalization-crvs_new-bus-out" />
-      <log message="finalization-->credential-requestor-stage crvs_new route ${bodyAs(String)}" />
+      <log message="finalization-->printing-stage crvs_new route ${bodyAs(String)}" />
       <choice>
          <when>
             <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == true)]</jsonpath>
@@ -138,13 +164,13 @@
             <to uri="workflow-cmd://anonymous-profile" />
          </when>
          <otherwise>
-            <to uri="eventbus://credential-requestor-bus-in" />
+            <to uri="eventbus://printing-bus-in" />
          </otherwise>
       </choice>
    </route>
-   <route id="credential-requestor-stage--> crvs_new route">
-      <from uri="eventbus://credential-requestor-crvs_new-bus-out" />
-      <log message="credential-requestor-stage--> crvs_new route ${bodyAs(String)}" />
+   <route id="printing-stage--> crvs_new route">
+      <from uri="eventbus://printing-crvs_new-bus-out" />
+      <log message="printing-stage--> crvs_new route ${bodyAs(String)}" />
       <choice>
          <when>
             <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == true)]</jsonpath>
