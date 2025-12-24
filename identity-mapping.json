@@ -7,7 +7,7 @@
             "value": "zone,postalCode"
         },
         "name": {
-            "value": "fullName"
+            "value": "surname,givenName,otherNames"
         },
         "gender": {
             "value": "gender"
