@@ -7,10 +7,7 @@
       "value": "zone,postalCode"
     },
     "name": {
-      "value": "surname,surnameCop"
-    },
-    "fullName": {
-      "value": "surname,givenName,otherNames,maidenName,previousName"
+      "value": "surname,givenName,otherNames,surnameCop"
     },
     "gender": {
       "value": "gender"
@@ -30,7 +27,13 @@
     "givenName": {
       "value": "givenName"
     },
+	"given_name": {
+      "value": "givenName"
+    },
     "otherNames": {
+      "value": "otherNames"
+    },
+	"other_names": {
       "value": "otherNames"
     },
     "maidenName": {
@@ -61,6 +64,9 @@
       "value": "VID"
     },
     "NIN": {
+      "value": "NIN"
+    },
+	"nin": {
       "value": "NIN"
     },
     "NIN_number_verified": {
