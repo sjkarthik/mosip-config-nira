@@ -400,7 +400,7 @@
             <to uri="eventbus://manual-adjudication-bus-in" />
          </when>
 		  <when>
-            <jsonpath suppressExceptions="true">$.[?(@['tags']['ID_OBJECT-userServiceType'] == 'Alien New Registration')]</jsonpath>
+            <jsonpath suppressExceptions="true">$.[?(@['tags']['ID_OBJECT-userServiceType'] == 'Alien New Registration' || @['tags']['ID_OBJECT-userServiceType'] == 'Renewal of Alien'])]</jsonpath>
             <to uri="eventbus://mvs-bus-in" />
          </when>
          <otherwise>
