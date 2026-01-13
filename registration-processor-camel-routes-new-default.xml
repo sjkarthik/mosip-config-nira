@@ -609,13 +609,18 @@
             <jsonpath>$.[?(@['isValid'] == true &amp;&amp; @['internalError'] == true)]</jsonpath>
             <to uri="workflow-cmd://mark-as-reprocess" />
          </when>
-         <when>
+		  <when>
             <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == false)]</jsonpath>
             <to uri="workflow-cmd://complete-as-failed" />
             <to uri="workflow-cmd://anonymous-profile" />
          </when>
+          <when>
+             <jsonpath suppressExceptions="true">$.[?(@['tags']['AGE_GROUP'] == 'ADULT' || @['tags']['ID_OBJECT-applicantCitizenshipType'] == 'Alien New Registration' || @['tags']['rid'] =~ /^CRVS.*/)]</jsonpath>
+           <to uri="eventbus://printing-bus-in" />
+          </when>
          <otherwise>
-            <to uri="eventbus://printing-bus-in" />
+            <to uri="workflow-cmd://complete-as-processed" />
+            <to uri="workflow-cmd://anonymous-profile" />
          </otherwise>
       </choice>
    </route>
