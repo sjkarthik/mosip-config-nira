@@ -599,6 +599,7 @@
    <route id="finalization route-->printing-stage new route">
       <from uri="eventbus://finalization-new-bus-out" />
       <log message="finalization-->printing-stage route ${bodyAs(String)}" />
+	  <log message="RID prefix = '${jsonpath:substring(@['rid'],0,4)}'" />
       <choice>
          <when>
             <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == true)]</jsonpath>
