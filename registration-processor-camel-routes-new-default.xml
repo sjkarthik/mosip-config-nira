@@ -264,6 +264,10 @@
             <to uri="workflow-cmd://complete-as-failed" />
             <to uri="workflow-cmd://anonymous-profile" />
          </when>
+		 <when>
+			 <jsonpath suppressExceptions="true">$.[?(@['tags']['AGE_GROUP'] == 'CHILD')]</jsonpath>
+           <to uri="eventbus://demo-dedupe-bus-in" />
+        </when>
          <otherwise>
             <to uri="eventbus://quality-classifier-bus-in" />
          </otherwise>
