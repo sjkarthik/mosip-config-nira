@@ -1024,6 +1024,9 @@
         },
 		"poaid": {
             "value": "proofOfAlienID"
+        },
+		"popp": {
+            "value": "proofOfPrinciplePassport"
         }
     },
     "attributeUpdateCountLimit": {
