@@ -98,7 +98,7 @@
       </choice>
    </route>
    <route id="mvs route-->uin-generation new route">
-      <from uri="eventbus://mvs-new-bus-out" />
+      <from uri="eventbus://mvs-crvs_new-bus-out" />
       <log message="mvs route-->uin-generator new route ${bodyAs(String)}" />
       <choice>
          <when>
