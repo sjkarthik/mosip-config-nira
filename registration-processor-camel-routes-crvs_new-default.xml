@@ -97,9 +97,9 @@
          </otherwise>
       </choice>
    </route>
-   <route id="mvs route-->uin-generation new route">
-       <from uri="eventbus://mvs-new-bus-out" />
-      <log message="mvs route-->uin-generator new route ${bodyAs(String)}" />
+   <route id="mvs route-->uin-generation crvs_new route">
+       <from uri="eventbus://mvs-crvs_new-bus-out" />
+      <log message="mvs route-->uin-generator crvs_new route ${bodyAs(String)}" />
       <choice>
          <when>
             <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == true)]</jsonpath>
