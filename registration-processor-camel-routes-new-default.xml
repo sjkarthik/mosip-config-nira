@@ -614,17 +614,14 @@
             <to uri="workflow-cmd://complete-as-failed" />
             <to uri="workflow-cmd://anonymous-profile" />
          </when>
-          <when>
+          <!-- <when>
              <jsonpath suppressExceptions="true">$.[?(@['tags']['AGE_GROUP'] == 'ADULT' || @['tags']['ID_OBJECT-userServiceType'] == 'Alien New Registration')]</jsonpath>
            <to uri="eventbus://printing-bus-in" />
-          </when>
-		  <when>
-  			<jsonpath>$.rid =~ /-/</jsonpath>
-  			<to uri="eventbus://printing-bus-in" />
-		  </when>
+          </when> -->
          <otherwise>
-            <to uri="workflow-cmd://complete-as-processed" />
-            <to uri="workflow-cmd://anonymous-profile" />
+            <!-- <to uri="workflow-cmd://complete-as-processed" />
+            <to uri="workflow-cmd://anonymous-profile" /> -->
+			 <to uri="eventbus://printing-bus-in" />
          </otherwise>
       </choice>
    </route>
