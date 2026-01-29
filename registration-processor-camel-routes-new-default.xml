@@ -615,13 +615,9 @@
             <to uri="workflow-cmd://anonymous-profile" />
          </when>
           <when>
-             <jsonpath suppressExceptions="true">$.[?(@['tags']['AGE_GROUP'] == 'ADULT' || @['tags']['ID_OBJECT-userServiceType'] == 'Alien New Registration')]</jsonpath>
+             <jsonpath suppressExceptions="true">$.[?(@['tags']['AGE_GROUP'] == 'ADULT' || @['tags']['ID_OBJECT-userServiceType'] == 'Alien New Registration' || @['rid'].contains('-'))]</jsonpath>
            <to uri="eventbus://printing-bus-in" />
           </when>
-		  <when>
-  			<simple>${body[rid]} contains '-'</simple>
-  			<to uri="eventbus://printing-bus-in" />
-		  </when>
          <otherwise>
             <to uri="workflow-cmd://complete-as-processed" />
             <to uri="workflow-cmd://anonymous-profile" />
