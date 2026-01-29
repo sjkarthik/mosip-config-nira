@@ -619,7 +619,7 @@
            <to uri="eventbus://printing-bus-in" />
           </when>
 		  <when>
-  			<simple>${body[rid]} contains '-'</simple>
+  			<simple>${jsonpath($.rid)} contains '-'</simple>
   			<to uri="eventbus://printing-bus-in" />
 		  </when>
          <otherwise>
