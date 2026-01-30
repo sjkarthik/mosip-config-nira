@@ -281,8 +281,8 @@ def getApplicantType() {
   String ageCode = getAgeCode(identity);
   boolean isBioExPresent = getBioExceptionFlag(identity);
 
-  String facilityType= getCitizenhipType(identity);
-  String facilityTypeCode = getCitizenhipTypeCode(identity);
+  String facilityType= getFacilityType(identity);
+  String facilityTypeCode = getFacilityTypeCode(identity);
   String citizenshipType= getCitizenhipType(identity);
   String citizenshipTypeCode = getCitizenhipTypeCode(identity);
   String citizenshipTypeCop = getcitizenshipTypeCop(identity);
