@@ -35,7 +35,7 @@ String ByNaturalisation = "NAT";
 String ByRegistration = "CBREG";
 String ByArticleNine = "CUAN";
 
-String dependentPass = FT03;
+String dependentPass = "FT03";
 
 String LostReplacement = "LOST";
 String DamagedReplacement = "DMG";
