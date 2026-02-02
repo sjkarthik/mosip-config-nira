@@ -308,7 +308,11 @@
             <to uri="workflow-cmd://anonymous-profile" />
          </when>
 		  <when>
-            <jsonpath suppressExceptions="true">$.[?(@['messageBusAddress']['address'] == 'mvs-bus-in' &amp;&amp; @['tags']['AGE_GROUP'] == 'CHILD')]</jsonpath>
+            <jsonpath suppressExceptions="true">$.[?(@['tags']['ID_OBJECT-userServiceType'] == 'Alien New Registration' &amp;&amp; @['tags']['AGE_GROUP'] == 'CHILD')]</jsonpath>
+            <to uri="eventbus://mvs-bus-in" />
+         </when>
+		  <when>
+            <jsonpath suppressExceptions="true">$.[?(@['messageBusAddress']['address'] == 'mvs-bus-in']</jsonpath>
             <to uri="eventbus://mvs-bus-in" />
          </when>
 		  <when>
@@ -400,7 +404,7 @@
             <to uri="eventbus://manual-adjudication-bus-in" />
          </when>
 		  <when>
-            <jsonpath suppressExceptions="true">$.[?(@['tags']['ID_OBJECT-userServiceType'] == 'Alien New Registration' || @['tags']['ID_OBJECT-userServiceType'] == 'Renewal of Alien')]</jsonpath>
+            <jsonpath suppressExceptions="true">$.[?(@['tags']['ID_OBJECT-userServiceType'] == 'Alien New Registration']</jsonpath>
             <to uri="eventbus://mvs-bus-in" />
          </when>
          <otherwise>
