@@ -333,7 +333,7 @@
             <to uri="eventbus://mvs-bus-in" />
          </when>
 		  <when>
-            <jsonpath suppressExceptions="true">$.[?(@['messageBusAddress']['address'] == 'mvs-bus-in']</jsonpath>
+            <jsonpath suppressExceptions="true">$.[?(@['messageBusAddress']['address'] == 'mvs-bus-in')]</jsonpath>
             <to uri="eventbus://mvs-bus-in" />
          </when>
            <when>
