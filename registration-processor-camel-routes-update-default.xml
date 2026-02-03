@@ -248,7 +248,7 @@
             <to uri="workflow-cmd://anonymous-profile" />
          </when>
          <otherwise>
-            <to uri="eventbus://quality-classifier-bus-in" />
+            <to uri="eventbus://demo-dedupe-bus-in" />
          </otherwise>
       </choice>
    </route>
