@@ -43,9 +43,9 @@
       </choice>
    </route>
    <!-- Packet uploader to uin-generator Route -->
-   <route id="packet-uploader-->uin-generator deactivated route">
+   <route id="packet-uploader-->packet-validator deactivated route">
       <from uri="eventbus://packet-uploader-deactivated-bus-out" />
-      <log message="packet-uploader-->uin-generator deactivated route ${bodyAs(String)}" />
+      <log message="packet-uploader-->packet-validator deactivated route ${bodyAs(String)}" />
       <choice>
          <when>
             <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == true)]</jsonpath>
@@ -62,7 +62,7 @@
             <to uri="workflow-cmd://anonymous-profile" />
          </when>
          <otherwise>
-            <to uri="eventbus://uin-generator-bus-in" />
+            <to uri="eventbus://packet-validator-bus-in" />
          </otherwise>
       </choice>
    </route>
