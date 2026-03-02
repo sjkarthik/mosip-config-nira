@@ -833,7 +833,10 @@
         },
 		 "PRNId": {
             "value": "PRNId"
-        }
+        },
+		"declaredAsDeceased" : {
+			"value" : "declaredAsDeceased"
+		}
     },
     "metaInfo": {
         "value": "metaInfo"
