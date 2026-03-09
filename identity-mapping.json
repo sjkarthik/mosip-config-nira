@@ -842,7 +842,10 @@
         },
 	"isCardRequired": {
             "value": "isCardRequired"
-        }  
+        },
+		"declaredAsDeceased" : {
+			"value" : "declaredAsDeceased"
+		}
   },
   "metaInfo": {
     "value": "metaInfo"
