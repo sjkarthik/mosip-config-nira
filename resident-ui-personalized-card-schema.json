@@ -24,7 +24,8 @@
 				"spa":"Formato de nombre"
 			},
 			"formatOption":{
-				"eng": [{"label":"Full Name", "value":"surname","checked":true}],
+				"eng": [{"label":"Surname", "value":"surname","checked":true},
+						{"label":"Given Name", "value":"givenName","checked":true}],
 				"ara": [{"label":"الاسم الكامل", "value":"fullName","checked":true}],
 				"fra": [{"label":"nom et prénom", "value":"fullName","checked":true}],
 				"hin": [{"label":"पूरा नाम", "value":"fullName","checked":true}],
@@ -73,27 +74,27 @@
 			"checked":false
 		},
 		{
-			"attributeName": "UIN",
-			"maskAttributeName":"masked_UIN",
+			"attributeName": "NIN",
+			"maskAttributeName":"masked_NIN",
 			"maskRequired": true,
 			"formatRequired": false,
 			"label": {
-				"eng": "UIN",
-				"ara": "UIN",
-				"fra":"UIN",
-				"hin":"UIN",
-				"tam":"UIN",
-				"kan":"UIN",
-				"spa":"UIN"
+				"eng": "NIN",
+				"ara": "NIN",
+				"fra":"NIN",
+				"hin":"NIN",
+				"tam":"NIN",
+				"kan":"NIN",
+				"spa":"NIN"
 			},
 			"maskRequiredLabel": {
-				"eng": "Mask UIN",
-				"ara": "قناع UIN",
-				"fra":"Masque UIN",
-				"hin":"मास्क UIN",
-				"tam":"UIN-ஐ மறைக்கவும்",
-				"kan":"ಮಾಸ್ಕ್ UIN",
-				"spa":"Máscara UIN"
+				"eng": "Mask NIN",
+				"ara": "قناع NIN",
+				"fra":"Masque NIN",
+				"hin":"मास्क NIN",
+				"tam":"NIN-ஐ மறைக்கவும்",
+				"kan":"ಮಾಸ್ಕ್ NIN",
+				"spa":"Máscara NIN"
 			},
 			"displaykeyinsharewithpartner":true,
 			"displaykeyinpersonalisedcard":false,
