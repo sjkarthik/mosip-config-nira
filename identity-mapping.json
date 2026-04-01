@@ -834,6 +834,9 @@
 		 "PRNId": {
             "value": "PRNId"
         },
+		"isCardRequired": {
+            "value": "isCardRequired"
+        },
 		"declaredAsDeceased" : {
 			"value" : "declaredAsDeceased"
 		}
