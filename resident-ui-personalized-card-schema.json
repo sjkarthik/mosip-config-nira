@@ -79,7 +79,7 @@
 			"maskRequired": true,
 			"formatRequired": false,
 			"label": {
-				"eng": "NIN",
+				"eng": "NIN/AIN",
 				"ara": "NIN",
 				"fra":"NIN",
 				"hin":"NIN",
@@ -88,7 +88,7 @@
 				"spa":"NIN"
 			},
 			"maskRequiredLabel": {
-				"eng": "Mask NIN",
+				"eng": "Mask NIN/AIN",
 				"ara": "قناع NIN",
 				"fra":"Masque NIN",
 				"hin":"मास्क NIN",
