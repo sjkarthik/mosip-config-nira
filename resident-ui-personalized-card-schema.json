@@ -41,7 +41,7 @@
 			"attributeName": "dateOfBirth",
 			"maskRequired": false,
 			"formatRequired": true,
-			"defaultFormat":"DD/MMM/YYYY",
+			"defaultFormat":"DD/MM/YYYY",
 			"label": {
 				"eng": "Date of birth",
 				"ara": "تاريخ الميلاد",
@@ -61,7 +61,7 @@
 				"spa":"Formato de fecha"
 			},
 			"formatOption":{
-				"eng": [{"label":"DD/MMM", "value":"DD/MMM","checked":false}, {"label":"DD/MMM/YYYY", "value":"DD/MMM/YYYY","checked":true}],
+				"eng": [{"label":"DD/MMM", "value":"DD/MMM","checked":false}, {"label":"DD/MM/YYYY", "value":"DD/MM/YYYY","checked":true}],
 				"ara": [{"label":"اليوم / الشهر ", "value":"DD/MMM","checked":false}, {"label":"اليوم / الشهر / السنة", "value":"DD/MMM/YYYY","checked":true}],
 				"fra":[{"label":"JJ/MMM", "value":"DD/MMM","checked":false}, {"label":"JJ/MMM/AAAA", "value":"DD/MMM/YYYY","checked":true}],
 				"hin":[{"label":"DD/MMM", "value":"DD/MMM","checked":false}, {"label":"DD/MMM/YYYY", "value":"DD/MMM/YYYY","checked":true}],
@@ -205,13 +205,13 @@
 				"spa":"Formato de dirección"
 			},
 			"formatOption":{
-				"eng": [{"label":"Village", "value":"applicantPlaceOfResidenceVillage","checked":true},
-                    {"label":"District", "value":"applicantPlaceOfResidenceDistrict","checked":true},
-                    {"label":"Parish", "value":"applicantPlaceOfResidenceParish","checked":true},
-                    {"label":"PollingStation", "value":"pollingStationNameResidence","checked":true},
-                    {"label":"SubCounty", "value":"applicantPlaceOfResidenceSubCounty","checked":true},
+				"eng": [{"label":"District", "value":"applicantPlaceOfResidenceDistrict","checked":true},
                     {"label":"County", "value":"applicantPlaceOfResidenceCounty","checked":true},
-					 {"label":"ForiegnCountry", "value":"applicantForeignResidenceCountry","checked":true},
+					{"label":"SubCounty", "value":"applicantPlaceOfResidenceSubCounty","checked":true},
+                    {"label":"Parish", "value":"applicantPlaceOfResidenceParish","checked":true},
+					{"label":"PollingStation", "value":"pollingStationNameResidence","checked":true},
+					{"label":"Village", "value":"applicantPlaceOfResidenceVillage","checked":true},
+					{"label":"ForiegnCountry", "value":"applicantForeignResidenceCountry","checked":true},
                     {"label":"PostalAddress", "value":"applicantForeignResidenceAddress","checked":true},
 					{"label":"Full Address", "value":"fullAddress","checked":true}],
 				"ara": [{"label":"العنوان سطر 1", "value":"addressLine1","checked":true},{"label":"سطر العنوان 2", "value":"addressLine2","checked":true},{"label":"سطر العنوان 3", "value":"addressLine3","checked":true}, {"label":"منطقة", "value":"region","checked":true}, {"label":"مقاطعة", "value":"province","checked":true}, {"label":"مدينة", "value":"city","checked":true}, {"label":"منطقة", "value":"zone","checked":true},{"label":"رمز بريدي", "value":"postalCode","checked":true}, {"label":"العنوان الكامل", "value":"fullAddress","checked":true}],
