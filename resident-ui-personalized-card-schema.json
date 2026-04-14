@@ -211,7 +211,7 @@
                     {"label":"Parish", "value":"applicantPlaceOfResidenceParish","checked":true},
 					{"label":"Village", "value":"applicantPlaceOfResidenceVillage","checked":true},
 					{"label":"ForiegnCountry", "value":"applicantForeignResidenceCountry","checked":true},
-                    {"label":"PostalAddress", "value":"applicantForeignResidenceAddress","checked":true},
+                    {"label":"Foreign Residence Address", "value":"applicantForeignResidenceAddress","checked":true},
 					{"label":"PollingStation", "value":"pollingStationNameResidence","checked":true},
 					{"label":"Full Address", "value":"fullAddress","checked":true}],
 				"ara": [{"label":"العنوان سطر 1", "value":"addressLine1","checked":true},{"label":"سطر العنوان 2", "value":"addressLine2","checked":true},{"label":"سطر العنوان 3", "value":"addressLine3","checked":true}, {"label":"منطقة", "value":"region","checked":true}, {"label":"مقاطعة", "value":"province","checked":true}, {"label":"مدينة", "value":"city","checked":true}, {"label":"منطقة", "value":"zone","checked":true},{"label":"رمز بريدي", "value":"postalCode","checked":true}, {"label":"العنوان الكامل", "value":"fullAddress","checked":true}],
