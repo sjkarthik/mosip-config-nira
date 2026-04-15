@@ -27,13 +27,7 @@
     "givenName": {
       "value": "givenName"
     },
-	"given_name": {
-      "value": "givenName"
-    },
     "otherNames": {
-      "value": "otherNames"
-    },
-	"other_names": {
       "value": "otherNames"
     },
     "maidenName": {
