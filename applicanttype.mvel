@@ -27,7 +27,7 @@ String FirstID = "FIRSTID";
 String AlienNew = "ALIENNEW";
 String AlienRenewal = "ALIENRENEWAL";
 String AlienLost= "ALIENLOST";
-String deactivate = "DEACTIVATE";
+String deactivate = "DEACTIVATED";
 
 String dualCitizenship= "DLN";
 String ByBirthIndigenousCommunity = "CBBI";
