@@ -814,7 +814,7 @@
       "value": "dateOfBirth"
     },
     "picture": {
-      "value": "face"
+      "value": "faceRawImage"
     },
     "address": {
       "value": "District,County,SubCounty,Parish,Village,PollingStation"
