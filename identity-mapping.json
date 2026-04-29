@@ -815,6 +815,9 @@
     },
     "picture": {
       "value": "faceRawImage"
+    }, 
+	"faceRawImage": {
+      "value": "faceRawImage"
     },
     "address": {
       "value": "District,County,SubCounty,Parish,Village,PollingStation"
