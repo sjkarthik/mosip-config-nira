@@ -814,6 +814,9 @@
       "value": "dateOfBirth"
     },
     "picture": {
+      "value": "face"
+    },
+    "faceRawImage": {
       "value": "faceRawImage"
     },
     "address": {
