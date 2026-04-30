@@ -643,14 +643,14 @@
             <to uri="workflow-cmd://complete-as-failed" />
             <to uri="workflow-cmd://anonymous-profile" />
          </when>
-          <when>
-             <jsonpath suppressExceptions="true">$.[?(@['tags']['AGE_GROUP'] == 'ADULT' || @['tags']['ID_OBJECT-applicantCitizenshipType'] == 'Alien New Registration' || @['tags']['ID_OBJECT-applicantCitizenshipType'] == 'OpenCRVS')]</jsonpath>
-           	 <to uri="eventbus://printing-bus-in" />
-          </when>
+          <!-- <when>
+             <jsonpath suppressExceptions="true">$.[?(@['tags']['AGE_GROUP'] == 'ADULT' || @['tags']['ID_OBJECT-userServiceType'] == 'Alien New Registration')]</jsonpath>
+           <to uri="eventbus://printing-bus-in" />
+          </when> -->
          <otherwise>
-            <to uri="workflow-cmd://complete-as-processed" />
-            <to uri="workflow-cmd://anonymous-profile" />
-			<!-- <to uri="eventbus://printing-bus-in" /> -->
+            <!-- <to uri="workflow-cmd://complete-as-processed" />
+            <to uri="workflow-cmd://anonymous-profile" /> -->
+			 <to uri="eventbus://printing-bus-in" />
          </otherwise>
       </choice>
    </route>
