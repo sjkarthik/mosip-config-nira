@@ -111,7 +111,7 @@
          </when>
 		  <when>
             <jsonpath suppressExceptions="true">@['tags']['ID_OBJECT-userServiceType'] == 'Alien Deactivated')]</jsonpath>
-            <to uri="eventbus://mvs-validator-bus-in" />
+            <to uri="eventbus://mvs-bus-in" />
          </when>
          <otherwise>
             <to uri="eventbus://uin-generator-bus-in" />
