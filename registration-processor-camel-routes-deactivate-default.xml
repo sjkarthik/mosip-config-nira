@@ -42,7 +42,7 @@
          </otherwise>
       </choice>
    </route>
-   <!-- Packet uploader to uin-generator Route -->
+   <!-- Packet uploader to Packet Validator Route -->
    <route id="packet-uploader-->packet-validator deactivated route">
       <from uri="eventbus://packet-uploader-deactivated-bus-out" />
       <log message="packet-uploader-->packet-validator deactivated route ${bodyAs(String)}" />
@@ -66,9 +66,10 @@
          </otherwise>
       </choice>
    </route>
-	<route id="packet-validator-->uin-generator deactivated route">
+	<!-- Packet Validator to Packet Classifier Route -->
+   <route id="packet-validator-->packet-classifier deactivated route">
       <from uri="eventbus://packet-validator-deactivated-bus-out" />
-      <log message="packet-validator-->uin-generator deactivated route ${bodyAs(String)}" />
+      <log message="packet-validator-->packet-classifier deactivated route ${bodyAs(String)}" />
       <choice>
          <when>
             <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == true)]</jsonpath>
@@ -85,11 +86,63 @@
             <to uri="workflow-cmd://anonymous-profile" />
          </when>
          <otherwise>
+            <to uri="eventbus://packet-classifier-bus-in" />
+         </otherwise>
+      </choice>
+   </route>
+	<!-- Packet Classifier to Uin-Generator Route -->
+	<route id="packet-classifier-->uin-generator deactivated route">
+      <from uri="eventbus://packet-classifier-deactivated-bus-out" />
+      <log message="packet-classifier-->uin-generator deactivated route ${bodyAs(String)}" />
+      <choice>
+         <when>
+            <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == true)]</jsonpath>
+            <to uri="workflow-cmd://complete-as-failed" />
+            <to uri="workflow-cmd://anonymous-profile" />
+         </when>
+         <when>
+            <jsonpath>$.[?(@['isValid'] == true &amp;&amp; @['internalError'] == true)]</jsonpath>
+            <to uri="workflow-cmd://mark-as-reprocess" />
+         </when>
+         <when>
+            <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == false)]</jsonpath>
+            <to uri="workflow-cmd://complete-as-failed" />
+            <to uri="workflow-cmd://anonymous-profile" />
+         </when>
+		  <when>
+            <jsonpath suppressExceptions="true">@['tags']['ID_OBJECT-userServiceType'] != 'Alien Deactivated')]</jsonpath>
+            <to uri="eventbus://mvs-validator-bus-in" />
+         </when>
+         <otherwise>
             <to uri="eventbus://uin-generator-bus-in" />
          </otherwise>
       </choice>
    </route>
-   <!-- UIN Generator to biometric-extraction Route -->
+	<!-- MVS to Uin-Generator Route -->
+   <route id="mvs route-->uin-generation deactivated route">
+      <from uri="eventbus://mvs-deactivated-bus-out" />
+      <log message="mvs route-->uin-generator deactivated route ${bodyAs(String)}" />
+      <choice>
+         <when>
+            <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == true)]</jsonpath>
+            <to uri="workflow-cmd://complete-as-failed" />
+            <to uri="workflow-cmd://anonymous-profile" />
+         </when>
+         <when>
+            <jsonpath>$.[?(@['isValid'] == true &amp;&amp; @['internalError'] == true)]</jsonpath>
+            <to uri="workflow-cmd://mark-as-reprocess" />
+         </when>
+         <when>
+            <jsonpath>$.[?(@['isValid'] == false &amp;&amp; @['internalError'] == false)]</jsonpath>
+            <to uri="workflow-cmd://complete-as-rejected" />
+            <to uri="workflow-cmd://anonymous-profile" />
+         </when>
+         <otherwise>
+             <to uri="eventbus://uin-generator-bus-in" />
+         </otherwise>
+      </choice>
+   </route>
+   <!-- UIN-Generator to biometric-extraction Route -->
    <route id="uin-generation route-->biometric-extraction-stage deactivated route">
       <from uri="eventbus://uin-generator-deactivated-bus-out" />
       <log message="uin-generation-->biometric-extraction-stage route ${bodyAs(String)}" />
@@ -137,7 +190,8 @@
          </otherwise>
       </choice>
    </route>
-	<route id="finalization route-->printing-stage deactivated route">
+   <!-- finalization-extraction to printing Route -->
+	 <route id="finalization route-->printing-stage deactivated route">
       <from uri="eventbus://finalization-deactivated-bus-out" />
       <log message="finalization-->printing-stage deactivated route ${bodyAs(String)}" />
       <choice>
@@ -160,7 +214,7 @@
          </otherwise>
       </choice>
    </route>
-	 <!-- finalization to deactivated Route -->
+	 <!-- printing to deactivated Route -->
    <route id="printing-stage--> deactivated route">
       <from uri="eventbus://printing-deactivated-bus-out" />
       <log message="printing-stage--> deactivated route ${bodyAs(String)}" />
