@@ -110,7 +110,7 @@
             <to uri="workflow-cmd://anonymous-profile" />
          </when>
 		  <when>
-            <jsonpath suppressExceptions="true">@['tags']['ID_OBJECT-userServiceType'] = 'Alien Deactivated')]</jsonpath>
+            <jsonpath suppressExceptions="true">@['tags']['ID_OBJECT-userServiceType'] == 'Alien Deactivated')]</jsonpath>
             <to uri="eventbus://mvs-validator-bus-in" />
          </when>
          <otherwise>
