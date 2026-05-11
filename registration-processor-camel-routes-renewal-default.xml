@@ -444,6 +444,10 @@
             <jsonpath suppressExceptions="true">$.[?(@['messageBusAddress']['address'] == 'abis-handler-bus-in')]</jsonpath>
             <to uri="eventbus://abis-handler-bus-in" />
          </when> 
+		   <when>
+            <jsonpath suppressExceptions="true">$.[?(@['messageBusAddress']['address'] == 'manual-adjudication-bus-in')]</jsonpath>
+            <to uri="eventbus://manual-adjudication-bus-in" />
+         </when>
 		 <when>
             <jsonpath suppressExceptions="true">$.[?( @['tags']['ID_OBJECT-inDepthCitizenshipVerification'] == 'Y'  )]</jsonpath>
             <to uri="eventbus://mvs-bus-in" />
@@ -525,10 +529,14 @@
             <to uri="workflow-cmd://complete-as-rejected" />
 <!--             <to uri="workflow-cmd://anonymous-profile" /> -->
          </when>
-		  <when>
-			<jsonpath suppressExceptions="true">$.[?( @['tags']['ID_OBJECT-inDepthCitizenshipVerification'] == 'Y'  )]</jsonpath>
-			<to uri="eventbus://mvs-bus-in" />
-		 </when>
+		   <when>
+            <jsonpath suppressExceptions="true">$.[?( @['tags']['ID_OBJECT-inDepthCitizenshipVerification'] == 'Y'  )]</jsonpath>
+            <to uri="eventbus://mvs-bus-in" />
+         </when>
+		 <when>
+            <jsonpath suppressExceptions="true">$.[?(@['tags']['ID_OBJECT-applicantCitizenshipType'] == 'Renewal of Alien')]</jsonpath>
+            <to uri="eventbus://mvs-bus-in" />
+         </when>
          <otherwise>
            <to uri="eventbus://uin-generator-bus-in" />
          </otherwise>
