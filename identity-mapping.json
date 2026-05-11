@@ -96,6 +96,18 @@
         "userCase": {
             "value": "userCase"
         },
+		"DCICCountryCode": {
+            "value": "DCICCountryCode"
+        },
+		"DCICphone": {
+            "value": "DCICphone"
+        },
+		"DCICemail": {
+            "value": "DCICemail"
+        },
+		"reasonforCancellation": {
+            "value": "reasonforCancellation"
+        },
         "foundChildProofOfAdoption": {
             "value": "foundChildProofOfAdoption"
         },
