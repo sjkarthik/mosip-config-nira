@@ -93,6 +93,18 @@
     "userCase": {
       "value": "userCase"
     },
+	"DCICCountryCode": {
+      "value": "DCICCountryCode"
+    },
+	"DCICphone": {
+      "value": "DCICphone"
+    },
+	"DCICemail": {
+      "value": "DCICemail"
+    },
+	"reasonforCancellation": {
+      "value": "reasonforCancellation"
+    },
     "citizenshipTypeCop": {
       "value": "citizenshipTypeCop"
     },
