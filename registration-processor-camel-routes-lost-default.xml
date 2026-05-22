@@ -325,7 +325,7 @@
             <to uri="eventbus://abis-handler-bus-in" />
          </when>
 		  <when>
-            <jsonpath suppressExceptions="true">$.[?( @['tags']['ID_OBJECT-inDepthCitizenshipVerification'] == 'Y'  || @['tags']['ID_OBJECT-userServiceTypeReplacement'] == 'Lost'  )]</jsonpath>
+            <jsonpath suppressExceptions="true">$.[?( @['tags']['ID_OBJECT-inDepthCitizenshipVerification'] == 'Y'  || @['tags']['ID_OBJECT-userServiceTypeReplacement'] == 'Lost' || @['tags']['ID_OBJECT-applicantCitizenshipType'] == 'Alien Replacement')]</jsonpath>
             <to uri="eventbus://mvs-bus-in" />
          </when>
          <otherwise>
@@ -432,7 +432,7 @@
             <to uri="workflow-cmd://anonymous-profile" />
          </when>
 		  <when>
-            <jsonpath suppressExceptions="true">$.[?( @['tags']['ID_OBJECT-inDepthCitizenshipVerification'] == 'Y' || @['tags']['ID_OBJECT-userServiceTypeReplacement'] == 'Lost' )]</jsonpath>
+            <jsonpath suppressExceptions="true">$.[?( @['tags']['ID_OBJECT-inDepthCitizenshipVerification'] == 'Y' || @['tags']['ID_OBJECT-userServiceTypeReplacement'] == 'Lost' || @['tags']['ID_OBJECT-applicantCitizenshipType'] == 'Alien Replacement')]</jsonpath>
             <to uri="eventbus://mvs-bus-in" />
          </when>
          <otherwise>
