@@ -1,4 +1,4 @@
-# MOSIP Configuration
+### MOSIP Configuration
 
 ## Configuration properties
 
