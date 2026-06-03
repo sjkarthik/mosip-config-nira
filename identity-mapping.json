@@ -860,6 +860,9 @@
         },
 		"declaredAsDeceased" : {
 			"value" : "declaredAsDeceased"
+		},
+		"alienRemarks" : {
+			"value" : "alienRemarks"
 		}
   },
   "metaInfo": {
