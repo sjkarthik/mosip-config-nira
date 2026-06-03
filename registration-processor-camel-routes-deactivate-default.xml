@@ -161,6 +161,11 @@
             <to uri="workflow-cmd://complete-as-failed" />
             <to uri="workflow-cmd://anonymous-profile" />
          </when>
+		 <when>
+            <jsonpath suppressExceptions="true">$.[?(@['tags']['ID_OBJECT-userServiceType'] == 'Alien Deactivated')]</jsonpath>
+            <to uri="workflow-cmd://complete-as-processed" />
+            <to uri="workflow-cmd://anonymous-profile" />
+         </when>
          <otherwise>
             <to uri="eventbus://biometric-extraction-bus-in" />
          </otherwise>
