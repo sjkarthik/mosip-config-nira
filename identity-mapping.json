@@ -183,9 +183,6 @@
     "applicantPlaceOfEnrolmentVillage": {
       "value": "applicantPlaceOfEnrolmentVillage"
     },
-    "placeOfEnrolmentAddress": {
-      "value": "applicantPlaceOfEnrolmentDistrict,applicantPlaceOfEnrolmentCounty,applicantPlaceOfEnrolmentSubCounty,applicantPlaceOfEnrolmentParish,applicantPlaceOfEnrolmentVillage"
-    },
     "applicantOriginPlace": {
       "value": "applicantOriginPlace"
     },
