@@ -165,6 +165,24 @@
     "applicantPlaceOfResidenceDistrictOfPrevRes": {
       "value": "applicantPlaceOfResidenceDistrictOfPrevRes"
     },
+	"enrolmentStatus": {
+      "value": "enrolmentStatus"
+    },
+    "applicantPlaceOfEnrolmentDistrict": {
+      "value": "applicantPlaceOfEnrolmentDistrict"
+    },
+    "applicantPlaceOfEnrolmentCounty": {
+      "value": "applicantPlaceOfEnrolmentCounty"
+    },
+    "applicantPlaceOfEnrolmentSubCounty": {
+      "value": "applicantPlaceOfEnrolmentSubCounty"
+    },
+    "applicantPlaceOfEnrolmentParish": {
+      "value": "applicantPlaceOfEnrolmentParish"
+    },
+    "applicantPlaceOfEnrolmentVillage": {
+      "value": "applicantPlaceOfEnrolmentVillage"
+    },
     "applicantOriginPlace": {
       "value": "applicantOriginPlace"
     },
