@@ -1075,7 +1075,10 @@
     },
 	"popp": {
         "value": "proofOfPrinciplePassport"
-    }
+    },
+	"pocpl": {
+       "value": "proofOfPoliceLetter"
+	}
   },
   "attributeUpdateCountLimit": {
     "fullName": 2,
