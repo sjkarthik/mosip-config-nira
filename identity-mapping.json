@@ -4,7 +4,7 @@
       "value": "IDSchemaVersion"
     },
     "locationHierarchyForProfiling": {
-      "value": "zone,postalCode"
+      "value": "applicantPlaceOfResidenceDistrict"
     },
     "name": {
       "value": "surname,givenName,otherNames,surnameCop"
