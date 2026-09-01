@@ -4,7 +4,7 @@
             "value": "IDSchemaVersion"
         },
         "locationHierarchyForProfiling": {
-            "value": "zone,postalCode"
+            "value": "applicantPlaceOfResidenceDistrict,applicantForeignResidenceCountry"
         },
         "name": {
             "value": "surname,givenName,otherNames,surnameCop"
@@ -96,6 +96,18 @@
         "userCase": {
             "value": "userCase"
         },
+		"DCICCountryCode": {
+            "value": "DCICCountryCode"
+        },
+		"DCICphone": {
+            "value": "DCICphone"
+        },
+		"DCICemail": {
+            "value": "DCICemail"
+        },
+		"reasonforCancellation": {
+            "value": "reasonforCancellation"
+        },
         "foundChildProofOfAdoption": {
             "value": "foundChildProofOfAdoption"
         },
@@ -150,6 +162,24 @@
         "applicantPlaceOfResidenceDistrictOfPrevRes": {
             "value": "applicantPlaceOfResidenceDistrictOfPrevRes"
         },
+		"enrolmentStatus": {
+            "value": "enrolmentStatus"
+        },
+   	    "applicantPlaceOfEnrolmentDistrict": {
+   		    "value": "applicantPlaceOfEnrolmentDistrict"
+   	    },
+   	    "applicantPlaceOfEnrolmentCounty": {
+   	        "value": "applicantPlaceOfEnrolmentCounty"
+  		},
+  	    "applicantPlaceOfEnrolmentSubCounty": {
+   		    "value": "applicantPlaceOfEnrolmentSubCounty"
+	    },
+ 	    "applicantPlaceOfEnrolmentParish": {
+	        "value": "applicantPlaceOfEnrolmentParish"
+  	    },
+  	    "applicantPlaceOfEnrolmentVillage": {
+  	        "value": "applicantPlaceOfEnrolmentVillage"
+ 	    },
         "applicantOriginPlace": {
             "value": "applicantOriginPlace"
         },
@@ -833,7 +863,16 @@
         },
 		 "PRNId": {
             "value": "PRNId"
-        }
+        },
+		"isCardRequired": {
+            "value": "isCardRequired"
+        },
+		"declaredAsDeceased" : {
+			"value" : "declaredAsDeceased"
+		},
+		"remark" : {
+			"value" : "remark"
+		}
     },
     "metaInfo": {
         "value": "metaInfo"
@@ -1027,7 +1066,10 @@
         },
 		"popp": {
             "value": "proofOfPrinciplePassport"
-        }
+        },
+		"pocpl": {
+    	    "value": "proofOfPoliceLetter"
+		}
     },
     "attributeUpdateCountLimit": {
         "fullName": 2,
