@@ -45,6 +45,9 @@
     "phone": {
       "value": "phone"
     },
+	"nonLocalPhone": {
+      "value": "nonLocalPhone"
+    },
     "phone_number": {
       "value": "phone"
     },
