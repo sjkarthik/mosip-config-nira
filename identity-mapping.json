@@ -917,6 +917,21 @@
         "popf": {
             "value": "proofOfPhysicalApplicationForm"
         },
+        "popf": {
+            "value": "proofOfPhysicalApplicationForm_new"
+        },
+        "popf": {
+            "value": "proofOfPhysicalApplicationForm_update"
+        },
+        "popf": {
+            "value": "proofOfPhysicalApplicationForm_lost"
+        },
+        "popf": {
+            "value": "proofOfPhysicalApplicationForm_renewal"
+        },
+        "popf": {
+            "value": "proofOfPhysicalApplicationForm_firstId"
+        },
         "poabd": {
             "value": "proofOfAbandonment"
         },
