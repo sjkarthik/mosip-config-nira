@@ -166,6 +166,14 @@ def getCitizenhipTypeCode(identity) {
     return null;
 }
 
+def getNIN(identity) {
+     if(identity.containsKey('NIN')) {
+        Object val = identity.getOrDefault('NIN', null);
+          return val == null ? null : (val instanceof String ? ; (String)val : (String) ((List)val).get(0).value);
+    }
+    return null;
+}
+
 def getFatherNIN(identity) {
      if(identity.containsKey('fatherNIN')) {
         Object val = identity.getOrDefault('fatherNIN', null);
@@ -290,6 +298,7 @@ def getApplicantType() {
   String userCase= getUserCase(identity);
   String replacementTypeCode= getReplacementTypeCode(identity);
   String replacementType= getReplacementType(identity);
+  String nin= getNIN(identity);
   String motherNIN= getMotherNIN(identity);
   String fatherNIN= getFatherNIN(identity);
   boolean foundLink=getFoundLink(identity);
@@ -319,7 +328,23 @@ def getApplicantType() {
  else if(userCase==FirstID){
             return "800";
   }
- else if(userCase==AlienNew || userCase == AlienRenewal || userCase == deactivate){
+  else if (userCase == Update && nin != null && (nin.startsWith("A") || nin.startsWith("a"))) {
+    String result = "";
+	if(addingName || removingName || changeOrderOfNames || otherNameCorrections || completeChangeofName){
+		result += "104,";
+	}
+	if(changeInGender || changeOfDateOfBirth || changeInPlaceOfBirth) {
+		result += "105,";
+	}
+	if(changeInPlaceOfResidence) {
+		result += "106,";
+	}
+	if (result.endsWith(",")) {
+		result = result.substring(0, result.length() - 1);
+	}
+	return result;
+  }
+  else if(userCase==AlienNew || userCase == AlienRenewal || userCase == deactivate){
 	if(facilityType == dependentPass || facilityTypeCode == dependentPass){
 		return "103";
 	} else {
