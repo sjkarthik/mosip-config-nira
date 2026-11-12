@@ -1072,6 +1072,15 @@
         },
 		"pocpl": {
     	    "value": "proofOfPoliceLetter"
+		},
+		"poifdr": {
+    	    "value": "proofOfAlienImmigrationFacility"
+		},
+		"posde": {
+    	    "value": "proofOfAlienStatutoryDeclaration"
+		},
+		"poalcl": {
+    	    "value": "proofOfAlienLCLetter"
 		}
     },
     "attributeUpdateCountLimit": {
